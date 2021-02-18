@@ -734,7 +734,6 @@ cc_library(
     srcs = [
         "multinomial.cc",
         "random_standard_normal.cc",
-        "irfft2d.cc",
     ],
     hdrs = ["custom_ops_register.h"],
     copts = tflite_copts(),
@@ -743,8 +742,6 @@ cc_library(
         "//tensorflow/lite/c:common",
         "//tensorflow/lite/kernels/internal:tensor",
         "//tensorflow/lite/kernels/internal:types",
-        "//third_party/fft2d:fft2d_headers",		
-        "@fft2d",
         "@ruy//ruy/profiler:instrumentation",
     ],
 )
@@ -2238,13 +2235,9 @@ cc_test(
     size = "small",
     srcs = ["irfft2d_test.cc"],
     deps = [
-        ":custom_ops",
         ":test_main",
         ":test_util",
-        "//tensorflow/lite:framework",
-        "//tensorflow/lite/c:common",
         "//tensorflow/lite/schema:schema_fbs",
-        "//tensorflow/lite/testing:util",
         "@com_google_googletest//:gtest",
     ],
 )
